@@ -20,8 +20,6 @@ type Signup struct {
 func SIGNUP(s_up Signup) {
 	var sentence string
 	var nm []string
-	var num string
-
 	fmt.Printf("First_Name:\t")
 	fmt.Scanln(&s_up.First_name)
 	fmt.Printf("Last_Name:\t")
@@ -79,12 +77,15 @@ func SIGNUP(s_up Signup) {
 
 	fmt.Println("Siz muvaffaqiyatli kirdingiz🥳🥳🥳")
 	fmt.Println("")
-
+	product(s_up)
+}
+func product(s_up Signup){
+	var num string
 	file3, err := os.Open("/home/abduazim/Projects/Golang/registratsiya/warehouse.txt")
 	if err != nil {
 		log.Fatalf("Faylni ochishda xatolik: %v", err)
 	}
-	defer file.Close()
+	defer file3.Close()
 
 	scanner2 := bufio.NewScanner(file3)
 	var arr []string
@@ -108,6 +109,17 @@ func SIGNUP(s_up Signup) {
 				
 				s_up.Price=s_up.Price-(price*cnt)
 				fmt.Println("Sizning hisobizda ", s_up.Price, "mablag' bor")
+			}else{
+				fmt.Println("Hisobizda mag'lag' yetarli emas!!!")
+				num:=0
+				fmt.Println("Boshqa narsa olishni hohlaysizmi")
+				fmt.Println("[1] HA\t[2]Yo'q")
+				fmt.Scanln(&num)
+				if num==1{
+					product(s_up)
+				}else{
+					return
+				}
 			}
 		}
 	}

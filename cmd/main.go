@@ -4,8 +4,8 @@ import (
 	sup "Registratsiya/internal/Users/Signup"
 	"fmt"
 	sin "Registratsiya/internal/Users/Signin"
-	// pr "Registratsiya/internal/Product"
 	"os"
+	ad "Registratsiya/internal/Admin"
 )
 
 func main() {
@@ -29,7 +29,7 @@ func main() {
 			sin.Sign_in()
 		}	
 	} else if son == 2 {
-		
+		ad.Admin()
 		// pr.PRoduct()
 	} else {
 		os.Exit(0)
