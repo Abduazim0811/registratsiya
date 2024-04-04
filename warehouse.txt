@@ -1,0 +1,7 @@
+1 Kompyuter 5500000
+2 Telefon 1000000
+3 Monitor 500000
+4 Printer 800000
+5 Konditsioner 2000000
+6 Stol 300000
+7 Stul 150000
