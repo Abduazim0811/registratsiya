@@ -75,7 +75,11 @@ func Admin() {
 				var pr Product
 				Prt(pr)
 				return
+			}else{
+				fmt.Println("Parol notugri!!!")
 			}
+		}else{
+			fmt.Println("Parol notugri!!!")
 		}
 	}
 
