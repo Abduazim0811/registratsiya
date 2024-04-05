@@ -38,6 +38,8 @@ func SIGNIN(s_in SignIn) {
 				fmt.Println("Siz muvaffaqiyatli kirdingiz 🥳🥳🥳")
 				lampochka=true
 				
+			}else{
+				fmt.Println("Parol xato!!!")
 			}
 		}
 	}
