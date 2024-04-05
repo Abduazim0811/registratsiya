@@ -6,15 +6,17 @@ import (
 	"os"
 	"strings"
 	"log"
+	"strconv"
 )
 
 type SignIn struct {
 	Email    string
 	Password string
+	Price int
 }
 
 func SIGNIN(s_in SignIn) {
-	// arr:=make([]string, 0)
+	var num string
 	file, err := os.Open("/home/abduazim/Projects/Golang/registratsiya/malumotlar.txt")
 	if err != nil {
 		fmt.Println("Faylni ochishda xatolik:", err)
@@ -24,6 +26,8 @@ func SIGNIN(s_in SignIn) {
 	fmt.Printf("Email:\t")
 	fmt.Scanln(&s_in.Email)
 	fmt.Printf("Password:\t")
+	fmt.Scanln(&s_in.Password)
+	fmt.Printf("Price:\t")
 	fmt.Scanln(&s_in.Password)
 	lampochka:=false
 	scanner := bufio.NewScanner(file)
@@ -51,14 +55,34 @@ func SIGNIN(s_in SignIn) {
 		defer file.Close()
 
 
-		scanner2 := bufio.NewScanner(file3)
+	scanner2 := bufio.NewScanner(file3)
+	var arr []string
+	for scanner2.Scan() {
+		line := scanner2.Text()
+		arr=append(arr, line)
+		fmt.Println(line)
+	}
+		fmt.Println("")
+	fmt.Println("Yuqoridagilardan birini tanlang👆🏻👆🏻👆🏻")
+	fmt.Scanln(&num)
 
-		for scanner2.Scan() {
-			line:=scanner2.Text()
-			fmt.Println(line)
+	cnt:=0
+	for _,work:=range arr{
+		natija:=strings.Split(work, " ")
+		if natija[0]==num{
+			if price, err := strconv.Atoi(natija[2]); err == nil && price<= s_in.Price{
+				fmt.Println("Nechta olmoqchisiz ", natija[1])
+				fmt.Scanln(&cnt)
+				
+				s_in.Price=s_in.Price-(price*cnt)
+				fmt.Println("Sizning hisobizda ", s_in.Price, "mablag' bor")
+			}else{
+				fmt.Println("Hisobizda mag'lag' yetarli emas!!!")
+			}
 		}
 	}
 
+}
 }
 
 func Sign_in() {
