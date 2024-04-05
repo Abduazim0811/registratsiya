@@ -32,7 +32,10 @@ func Prt(pr Product) {
 	}
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
+	fmt.Println(scanner.Scan())
 	for scanner.Scan() {
+		cnt++
+		fmt.Println(cnt)
 		line := scanner.Text()
 		if !strings.Contains(line, pr.Title) {
 			nimadur := strconv.Itoa(int(pr.Price))
@@ -40,9 +43,9 @@ func Prt(pr Product) {
 				lampochka = true
 			}
 		}
-		cnt++
+		
 	}
-	slc = append(slc, pr.Title, fmt.Sprintf("%d", pr.Price))
+	slc = append(slc, fmt.Sprintf("%d", cnt+1),pr.Title, fmt.Sprintf("%d", pr.Price))
 	if !lampochka {
 		sentence2 = strings.Join(slc, " ")
 		yozuvchi := bufio.NewWriter(file)
